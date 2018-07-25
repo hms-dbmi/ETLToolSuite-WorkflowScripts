@@ -3,7 +3,7 @@ INFILE 'ObservationFact.csv'
 BADFILE 'ObservationFact.bad'
 DISCARDFILE 'ObservationFact.dsc'
 TRUNCATE 
-INTO TABLE i2b2demodata.observation_fact_y
+INTO TABLE i2b2demodata.observation_fact
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY "`"
 TRAILING NULLCOLS
