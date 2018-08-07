@@ -15,7 +15,8 @@
       "Description" : "WEB EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t2.micro","t2.small","t2.medium","t2.large" ]
+      "AllowedValues" : [  "t2.micro", "t2.small",  "m4.large", "m4.xlarge"],
+      "ConstraintDescription" : "Must be a valid EC2 instance type"
     },
 
     "CorporateCidrIp" : {
@@ -26,14 +27,17 @@
 
   },
 
-  "Mappings" : {
+"Mappings" : {
     "AWSInstanceType2Arch" : {
-      "t2.micro"   : { "Arch" : "64" }
+      "t2.micro"    : { "Arch" : "64" },
+      "t2.small"   : { "Arch" : "64" },
+      "m4.large"   : { "Arch" : "64" },
+      "m4.xlarge"   : { "Arch" : "64" }
     },
     "AWSRegionArch2AMI" : {
-      "us-east-1"      : {"64" : "ami-b70554c8"}
+      "us-east-1" : { "64" : "ami-b70554c8" }
     }
-  },
+},
 
   "Resources" : {
      "ETLVPC" : {
@@ -205,6 +209,7 @@
         "GroupDescription" : "Web Security Group",
         "VpcId" : {"Ref" : "ETLVPC"},
         "SecurityGroupIngress" : [
+          { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0" },
           { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : "0.0.0.0/0" },
           { "IpProtocol" : "icmp", "FromPort" : "-1", "ToPort" : "-1", "CidrIp" : "0.0.0.0/0" }
         ]
