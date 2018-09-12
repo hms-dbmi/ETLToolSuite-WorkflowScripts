@@ -15,14 +15,20 @@ Data file and Mapping file from [MappingGenerator Example](https://github.com/hm
 Steps:  
 This example was validated on a Mac and AMI Linux terminals   
 
-1. Open bash connection to your ETL Client Docker  
+1. Run following docker command in on your machine hosting Quick Start Stack:
+ ( Take note of the IPv4Address for the quickstart_db_1 container it will be needed in upcoming steps )
+`docker network inspect quickstart_public | grep -A4 quickstart_db_1`
+2. Open bash connection to your ETL Client Docker  
 `docker exec -it etl-client bash`   
-2. Use git to clone this project to a dir of your choosing. Change username to your git user.  
+3. Use git to clone this project to a dir of your choosing. Change username to your git user.  
 `git clone https://github.com/hms-dbmi/ETLToolSuite-WorkflowScripts`     
-3. Navigate to the following dir:
+4. Navigate to the following dir:
 `cd ETLToolSuite-WorkflowScripts`
-4. Execute following command to load your Docker DB
+5. Execute following command to load your Docker DB
+( docker host name of ip will be the IPv4Address found in step 1. )
 `bash ExampleLoad.sh <path_to_generated_entity_files> <docker_host_name_or_ip> <username_and_password_for_docker_db>`
 Example:
-`bash ExampleLoad.sh /configurations/ETLToolSuite-EntityGenerator/completed localhost pdbadmin/password`
-5. 
+`pwbash ExampleLoad.sh /configurations/ETLToolSuite-EntityGenerator/completed 172.18.0.1 pdbadmin/password`
+6. You can verify all the data was loaded successfully by scrolling up or visiting your quickstart application.
+
+***
