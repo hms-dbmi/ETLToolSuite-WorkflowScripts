@@ -28,7 +28,7 @@ This example was validated on a Mac and AMI Linux terminals
 ( docker host name of ip will be the IPv4Address found in step 1. )
 `bash ExampleLoad.sh <path_to_generated_entity_files> <docker_host_name_or_ip> <username_and_password_for_docker_db>`
 Example:
-`pwbash ExampleLoad.sh /configurations/ETLToolSuite-EntityGenerator/completed 172.18.0.1 pdbadmin/password`
-6. You can verify all the data was loaded successfully by scrolling up or visiting your quickstart application.
-
+`bash ExampleLoad.sh /configurations/ETLToolSuite-EntityGenerator/completed 172.18.0.1 pdbadmin/password`
+6. You can verify all the data was loaded successfully by running following command and visiting your quickstart application.
+`cat *.log | grep -B1 -A4 'Rows successfully loaded'`
 ***
